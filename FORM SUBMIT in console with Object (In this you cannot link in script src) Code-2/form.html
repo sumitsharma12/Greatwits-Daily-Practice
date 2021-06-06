@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <!-- <script src="/form.js"></script> -->
+</head>
+
+<body>
+    <!-- Submitting Form Output in console   -->
+
+    <form id="form">
+        <h2>Contact Us</h2>
+        Name:<input type="name" name="name" id="name" placeholder="Username"><br>
+        <br>email:<input type="email" name="email" id="email" placeholder="email"> <br>
+        <br>mobilenumber:<input type="mobilenumber" name="mobilenumber" id="mobilenumber" placeholder="Mobilenumber"> <br>
+        <br>address:<input type="address" name="address" id="address" placeholder="Type Your Address"><br>
+        <br> text:<textarea name="text" id="text" cols="30" rows="10" placeholder="Comment and Suggestions"></textarea><br>
+        <br>
+        <br><input type="submit" value="submit">
+    </form><br>
+
+
+
+
+</body>
+
+<script>
+var name, email, mobilenumber, address, text;
+class Data {
+    constructor(name, email, mobilenumber, address, text) {
+        this.username = name;
+        this.useremail = email;
+        this.usermobilenumber = mobilenumber;
+        this.useraddress = address;
+        this.usertext = text
+    }
+}
+
+var form = document.getElementById('form');
+form.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    var name = document.getElementById('name').value
+    console.log(name)
+
+    var email = document.getElementById('email').value
+    console.log(email)
+
+    var mobilenumber = document.getElementById('mobilenumber').value
+    console.log(mobilenumber)
+
+    var address = document.getElementById('address').value
+    console.log(address)
+
+    var text = document.getElementById('text').value
+    console.log(text)
+
+    userData = new Data(name, email, mobilenumber, address, text);
+    console.log(userData);
+
+    
+}
+)
+
+
+
+   
+
+</script>
+
+</html>

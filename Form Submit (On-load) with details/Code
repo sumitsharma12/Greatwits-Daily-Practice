@@ -1,0 +1,104 @@
+
+/////This is Index.html////
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form submit in console</title>
+</head>
+
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="name" name="name" id="name"><br>
+        <br>
+        <label for="email">E-Mail:</label>
+        <input type="email" name="email" id="email"><br>
+        <br>
+        <label for="Phone">Phone No.:</label>
+        <input type="Phone" name="Phone" id="Phone"><br>
+        <br>
+    </form>
+    <button type="button" onclick="submit()">SUBMIT</button>
+    <script src="/index.js"></script>
+</body>
+<!-- <script>
+</script> -->
+
+</html>
+
+
+
+
+///This is Index.js////
+
+
+class Data {
+        constructor(name, email, Phone) {
+            this.username = name;
+            this.useremail = email;
+            this.userphone = Phone
+        }
+    }
+
+
+    function submit() 
+    {
+       let  name = document.getElementById('name').value;
+        console.log(name)
+
+      let email = document.getElementById('email').value;
+        console.log(email)
+
+     let Phone = document.getElementById('Phone').value;
+        console.log(Phone)
+
+     let userData = new Data(name, email, Phone)
+
+        window.open('formcomplete.html?name=' + userData.username + '&email=' + userData.useremail + '&Phone=' + userData.userphone , "_self");
+
+        // console.log(userData);
+
+
+    }
+
+
+
+//This is formcomplete.html file ///
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>confirmation</title>
+</head>
+<body onload="formComplete()">
+    <p><span>Name of User:</span><span class="nameOfUser"></span></p>
+    <p><span>Email of user:</span><span class="emailOfUser"></span></p>
+    <p><span>Phone of user:</span><span class="PhoneOfUser"></span></p>
+
+    <script src="formComplete.js"></script>
+</body>
+</html>
+
+
+
+//This is formcomplete.js file ///
+
+document.write("<h1>Your Form is Submitted</h1> ")
+
+function formComplete() {
+    document.querySelector('.nameOfUser').textContent = getQueryStringValue("name");
+    document.querySelector('.emailOfUser').textContent = getQueryStringValue("email");
+    document.querySelector('.PhoneOfUser').textContent = getQueryStringValue("Phone");
+  console.log(window.location.search)
+}
+
+function getQueryStringValue(key) {
+    return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+}
+
